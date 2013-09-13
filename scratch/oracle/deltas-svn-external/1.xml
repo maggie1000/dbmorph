@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE update SYSTEM "update.dtd">
+
+<update number="1">
+    <summary>Install the SCHEMA_VERSION table and associated sequence and packages to support the database manager tool.</summary>
+    <schema>main</schema>
+
+    <up>
+<![CDATA[
+create sequence schema_version_seq nocache;
+
+create table schema_version(
+    id integer not null primary key,
+    last_update_ran varchar2(32) not null
+        constraint schema_version_version_uk unique,
+    summary varchar2(2000) not null,
+    last_ran date not null
+);
+
+]]>
+    </up>
+
+    <down>
+<![CDATA[
+drop package schema_version_pkg;
+drop table schema_version;
+drop sequence schema_version_seq;
+
+]]>
+    </down>
+
+    <packages>
+        <package>
+            <pkg>MyApp/SchemaVersion/pkg.sql</pkg>
+            <pkg_body>MyApp/SchemaVersion/pkg_body.sql</pkg_body>
+        </package>
+    </packages>
+</update>

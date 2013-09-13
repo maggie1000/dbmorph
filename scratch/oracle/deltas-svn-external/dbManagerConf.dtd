@@ -1,0 +1,13 @@
+<!ELEMENT db_manager_conf (svn_repo_uri, sql_directory, branches?)>
+
+<!ELEMENT svn_repo_uri (#PCDATA)>
+<!ELEMENT sql_directory (#PCDATA)>
+
+<!ELEMENT branches (branch*)>
+<!ELEMENT branch (name, last_update_from_trunk, deltas?)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT last_update_from_trunk (#PCDATA)>
+<!ELEMENT deltas (delta*)>
+<!ELEMENT delta (#PCDATA)>
+<!ATTLIST delta src CDATA #REQUIRED>
+<!ATTLIST delta original_branch CDATA #IMPLIED>

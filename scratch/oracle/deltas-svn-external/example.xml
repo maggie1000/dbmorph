@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE update SYSTEM "update.dtd">
+
+<update number="0">
+    <summary>This update does X.</summary>
+
+    <schema>main</schema>
+
+    <up>
+<![CDATA[
+    -- Change you want installed.
+    create table test_table (field1 varchar2(1));
+
+    -- If you don't have any DDL to run, put a comment like this:
+    -- No DDL to run.
+
+
+]]>
+    </up>
+
+    <down>
+<![CDATA[
+    -- How to uninstall the change.
+    drop table test_table;
+
+
+]]>
+    </down>
+
+    <packages>
+        <package>
+            <pkg>MyApp/Test/pkg.sql</pkg>
+            <pkg_body>MyApp/Test/pkg_body.sql</pkg_body>
+        </package>
+        <package>
+            <pkg>MyApp/Test2/pkg.sql</pkg>
+            <pkg_body>MyApp/Test2/pkg_body.sql</pkg_body>
+        </package>
+    </packages>
+
+    <jobs>
+        <up>
+        begin
+            dbms_scheduler.create_job(
+                job_name => 'test_job',
+                job_type => 'plsql_block',
+                job_action => 'begin test_pkg.run_test; end;',
+                repeat_interval => 'freq=daily;byhour=0;',
+                enabled => true,
+                comments => '');
+        end;
+/
+show errors
+
+        </up>
+
+        <down>
+        begin
+            dbms_scheduler.drop_job(
+                job_name => 'test_job',
+                force => true
+            );
+        end;
+/
+show errors
+
+        </down>
+    </jobs>
+</update>

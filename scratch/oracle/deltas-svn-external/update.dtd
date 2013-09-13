@@ -1,0 +1,14 @@
+<!ELEMENT update (summary, schema, up, down, packages?, jobs?)>
+<!ATTLIST update number CDATA #REQUIRED>
+
+<!ELEMENT summary (#PCDATA)>
+<!ELEMENT schema (#PCDATA)>
+<!ELEMENT up (#PCDATA)>
+<!ELEMENT down (#PCDATA)>
+
+<!ELEMENT packages (package*)>
+<!ELEMENT package (pkg, pkg_body)>
+<!ELEMENT pkg (#PCDATA)>
+<!ELEMENT pkg_body (#PCDATA)>
+
+<!ELEMENT jobs (up, down)>

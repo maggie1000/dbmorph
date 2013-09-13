@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE db_manager_conf SYSTEM "dbManagerConf.dtd">
+
+<db_manager_conf>
+    <svn_repo_uri>https://myrepo.com/svn/myapp/</svn_repo_uri>
+    <sql_directory>sql</sql_directory>
+
+    <branches>
+        <branch>
+            <name>trunk</name>
+            <last_update_from_trunk>0</last_update_from_trunk>
+            <deltas>
+                <delta src="db_deltas/deltas">1</delta>
+                <delta src="db_deltas/deltas">2</delta>
+                <delta src="db_deltas/deltas" original_branch="2.2">3</delta>
+            </deltas>
+        </branch>
+        <branch>
+            <name>2.2</name>
+            <last_update_from_trunk>2</last_update_from_trunk>
+            <deltas>
+                <delta src="db_deltas/deltas">3</delta>
+            </deltas>
+        </branch>
+    </branches>
+</db_manager_conf>

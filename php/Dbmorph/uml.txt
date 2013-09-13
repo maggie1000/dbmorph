@@ -1,0 +1,30 @@
+Delta:
+    v provider
+    v id
+    v direction
+    v summary
+    v schema
+    v up
+    v down
+    f __construct
+    f getProvider
+    f getId
+    f getDirection
+    f getSummary
+
+DeltaInterface:
+    f getDbCode
+
+Delta_Oracle extends Delta implements DeltaInterface:
+    v storedFunctions
+    v storedProcedures
+
+Delta_Mysql extends Delta implements DeltaInterface:
+    v storedFunctions
+
+Provider:
+    - parses delta X
+    - knows where deltas live
+
+    - which deltas have already been installed?
+
