@@ -9,6 +9,8 @@ Except that in addition to very basic CREATE and ALTER statements, we wanted dat
 
 The code was originally available since early 2008 on SourceForge: https://sourceforge.net/projects/dbmorph/
 
+This code is no longer maintained.
+
 Enjoy.
 
-Authors: Maggie Nelson (maggie1000) and David Mora 
+Authors: Maggie Nelson (@maggie1000) and David Mora (@dmora)
